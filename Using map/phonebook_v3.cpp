@@ -30,7 +30,7 @@ int main(){
 			if(mp.size()==0)
 				cout << "\t\t\t\t\t\t No Contacts to display"<<endl;
 			for(auto it: mp)
-				cout << "\t\t\t\t\t\t Name :" << it.first << "          Phone :" << it.second << endl;
+				cout << "\t\t\t\t\t\t Name :" << it.first << "\t\tPhone :" << it.second << endl;
 			cout<<"\t\t\t\t\t\t Total Contacts=" <<mp.size()<<endl; 
 		}
 
@@ -38,17 +38,19 @@ int main(){
 		else if (check == '3'){
 			cout << "\t\t\t\t\tNumber : ";
 			cin >> numberToSearch;
+			bool found=false;
 			if(mp.size()==0){
 				cout << "\t\t\t\t\t\t No Contacts to Search";
 				continue;
 			}
-
-			if(mp.find(numberToSearch)!=mp.end()){	
-				auto it=mp.find(numberToSearch);
-				cout << "\t\t\t\t\tNumber is Found"<<endl;
-				cout << "\t\t\t\t\t\t Name :" << it->first << "          Phone :" << it->second << endl;
+			for(auto it:mp){	
+				if(it.second==numberToSearch){
+					found=true;
+					cout << "\t\t\t\t\tNumber is Found"<<endl;
+					cout << "\t\t\t\t\tName:" << it.first << "\t\tPhone :" << it.second << endl;
+				}
 			}
-			else
+			if(found==false)
 				cout << "\t\t\t\t\tNumber is NOT Found"<<endl;
 		}
 
@@ -64,7 +66,7 @@ int main(){
 			if (mp.find(nameToSearch)!=mp.end()){
 				auto it=mp.find(nameToSearch);
 				cout << "\t\t\t\t\tName is Found"<<endl;
-				cout << "\t\t\t\t\tName : " << it->first << "    Phone : " << it->second << endl;
+				cout << "\t\t\t\t\tName : " << it->first << "\t\tPhone : " << it->second << endl;
 	
 			}			
 			else
@@ -104,7 +106,7 @@ int main(){
 					cout << "\t\t\t\t\t wrong input. Please try again"<<endl;
 					goto jump;
 				}
-				cout << "\t\t\t\t\tName : " << mp.find(newName)->first << "    Phone : " << mp.find(newName)->second << endl;
+				cout << "\t\t\t\t\tName : " << mp.find(newName)->first << "\t\tPhone : " << mp.find(newName)->second << endl;
 				cout << "\t\t\t\t\tUpdated Successfully!!"<<endl;
 				mp.erase(it);
 			}
@@ -123,7 +125,7 @@ int main(){
         	getline(cin,nameToBeDeleted);
 			if (mp.find(nameToBeDeleted)!=mp.end()){
 				auto it=mp.find(nameToBeDeleted);
-				cout << "\t\t\t\t\tName : " << it->first << "    Phone : " << it->second << endl;
+				cout << "\t\t\t\t\tName : " << it->first << "\t\tPhone : " << it->second << endl;
 				cout << "\t\t\t\t\tDeleted Successfully"<<endl;
 				mp.erase(it);
 			}
